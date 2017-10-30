@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ruleset name="LMSAdescomPlugin">
+    <description>LMSAdescomPlugin coding standard</description>
+    <ini name="memory_limit" value="2048M"/>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <rule ref="PSR2"/>
+</ruleset>

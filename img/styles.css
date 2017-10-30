@@ -1,0 +1,214 @@
+.loading {
+    -webkit-animation: rotation .75s infinite linear;
+    -moz-animation: rotation .75s infinite linear;
+    -o-animation: rotation .75s infinite linear;
+    animation: rotation .75s infinite linear;
+}
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+    }
+}
+@-moz-keyframes rotation {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(359deg);
+    }
+}
+@-o-keyframes rotation {
+    from {
+        -o-transform: rotate(0deg);
+    }
+    to {
+        -o-transform: rotate(359deg);
+    }
+}
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+.adescom-fieldset,
+.adescom-fieldset > legend,
+.adescom-fieldset .form_buttons button {
+    border-style: solid;
+    border-color: #252525;
+    border-radius: 3px;
+}
+
+.adescom-fieldset {
+    font-family: sans-serif;
+    box-sizing: border-box;
+    border-width: 1px;
+    background-color: #dfd5bd;
+    margin-bottom: 0.5em;
+}
+
+.adescom-fieldset > legend,
+.adescom-fieldset .form_buttons button {
+    padding: .25em 1em;
+    border-width: 2px;
+    background-color: #cebd9b;
+}
+
+.form_errors {
+    border-color: #f00;
+}
+
+.adescom-fieldset label {
+    width: 30%;
+    word-wrap: break-word;
+    font-weight: bold;
+    text-align: right;
+}
+
+.adescom-fieldset ul.radio label {
+    width: 90%;
+}
+
+.adescom-fieldset input[type="text"]:only-of-type, .adescom-fieldset textarea:only-of-type {
+    width: 65%; /* -5% for required mark */
+}
+
+.adescom-fieldset textarea {
+    resize: vertical;
+    height: 200px;
+}
+
+.adescom-fieldset input[type="radio"], .adescom-fieldset input[type="checkbox"] {
+    padding: 0;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    margin-left: 8px;
+}
+
+.adescom-fieldset select {
+    width: 80%;
+    border: 2px solid #eee;
+}
+
+.adescom-fieldset select:only-child {
+    width: 100%;
+}
+
+.form_2_columns .form_column {
+    width: 49%;
+}
+
+.form_3_columns .form_column {
+    width: 33%;
+}
+
+.form_4_columns .form_column {
+    width: 24%;
+}
+
+.form_2_columns .form_column:nth-child(2n),
+.form_3_columns .form_column:nth-child(3n),
+.form_3_columns .form_column:nth-child(3n-2),
+.form_4_columns .form_column:nth-child(4n),
+.form_4_columns .form_column:nth-child(4n-3),
+.form_4_columns .form_column:nth-child(4n-2) {
+    float: left;
+}
+
+.form_2_columns .form_column:nth-child(2n-1),
+.form_3_columns .form_column:nth-child(3n-1),
+.form_3_columns .form_column:nth-child(4n-1) {
+    margin-bottom: 1em;
+    float: right;
+}
+
+.adescom-fieldset > .form_column > label, .adescom-fieldset > .adescom-fieldset.form_column {
+    display: block;
+}
+
+.adescom-fieldset > .form_column > label, .adescom-fieldset > form_column {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.adescom-fieldset .form_column label:first-child, .adescom-fieldset .form_column .adescom-fieldset:first-child {
+    margin-top: 0;
+}
+
+.adescom-fieldset ul.block {
+    margin: 0;
+    padding: 0;
+}
+
+.adescom-fieldset ul.block li {
+    list-style: none;
+}
+
+.adescom-fieldset ul.block li label {
+    float: left;
+    padding-right: 8px;
+}
+
+.adescom-fieldset ul.inline1 li,
+.adescom-fieldset ul.inline2 li,
+.adescom-fieldset ul.inline3 li,
+.adescom-fieldset ul.inline4 li,
+.adescom-fieldset ul.inline5 li {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.adescom-fieldset ul.inline1 li {
+    width: 100%;
+}
+
+.adescom-fieldset ul.inline2 li {
+    width: 49%;
+}
+
+.adescom-fieldset ul.inline3 li {
+    width: 32%;
+}
+
+.adescom-fieldset ul.inline4 li {
+    width: 24%;
+}
+
+.adescom-fieldset ul.inline5 li {
+    width: 19%;
+}
+
+.adescom-fieldset .form_buttons, .adescom-fieldset .form_errors {
+    clear: both;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.adescom-fieldset .form_buttons button {
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.adescom-fieldset .form_buttons button:hover {
+    background-color: #dfd5bd;
+}
+
+@media screen and (max-width: 860px) {
+    .adescom-fieldset.form_2_columns .form_column,
+    .adescom-fieldset.form_3_columns .form_column,
+    .adescom-fieldset.form_4_columns .form_column {
+        width: 100%;
+    }
+    .form_2_columns .form_column:nth-child(2n+1),
+    .form_3_columns .form_column:nth-child(3n+2),
+    .form_4_columns .form_column:nth-child(4n+3) {
+        float: left;
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "name": "adescom/LMSAdescomPlugin",
+    "description": "LMSAdescomPlugin",
+    "homepage": "http://adescom.pl",
+    "license": "commercial",
+    "repositories": [{
+        "type": "composer",
+        "url": "<URL>"
+    }],
+    "require": {
+        "php": "^5.3",
+        "adescom/soap": "@dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "facebook/webdriver": "dev-master"
+    },
+    "autoload-dev": {
+        "classmap": ["lib/"]
+    },
+    "config": {
+        "secure-http": false
+    },
+    "minimum-stability": "dev"
+}
