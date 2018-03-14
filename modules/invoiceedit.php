@@ -24,7 +24,9 @@
  *  $Id$
  */
 
-include(MODULES_DIR . DIRECTORY_SEPARATOR . 'invoicexajax.inc.php');
+if ($_POST['xjxfun'] !== 'get_extra_position') {
+	include(MODULES_DIR . DIRECTORY_SEPARATOR . 'invoicexajax.inc.php');
+}
 
 $taxeslist = $LMS->GetTaxes();
 $action = isset($_GET['action']) ? $_GET['action'] : '';
@@ -650,7 +652,7 @@ function get_extra_position($type, $date_from, $date_to, $customer_id)
         $SMARTY->assign('taxeslist', $taxeslist);
 
         // render template
-        $output = $SMARTY->fetch('invoicenew-adescom.tpl');
+        $output = $SMARTY->fetch('invoiceedit-adescom.tpl');
 
         // render position
         $response->assign('extra_positions', 'innerHTML', $output);
