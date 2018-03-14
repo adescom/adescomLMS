@@ -6,7 +6,7 @@
     {if $listdata.page == $smarty.section.pagination.index}
         [{$smarty.section.pagination.index}]
     {else}
-        <a href="?m={$layout.module}&page={$smarty.section.pagination.index}">{$smarty.section.pagination.index}</a>
+        <a href="?m={$layout.module}{if $client_id}&client_id={$client_id}{/if}&page={$smarty.section.pagination.index}">{$smarty.section.pagination.index}</a>
     {/if}
 {/section}
 {if $listdata.page < $listdata.pages}
