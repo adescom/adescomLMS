@@ -66,9 +66,9 @@ if (empty($filter)) {
         $filter['fromDate'] = date('Y/m/01 00:00:00');
         $filter['toDate'] = date('Y/m/t 23:59:59');
         $filter['includeZeroDuration'] = false;
-        $filter['page'] = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT, array('options' => $page_options));
     }
 }
+$filter['page'] = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT, array('options' => $page_options));
 
 $client_id = filter_input(INPUT_GET, 'client_id', FILTER_VALIDATE_INT, $common_id_options);
 $voip_account_id = filter_input(INPUT_GET, 'voip_account_id', FILTER_VALIDATE_INT, $common_id_options);
@@ -89,6 +89,20 @@ if ($client_id !== null) {
     $clients[] = $client_id;
 } else {
     $voip_accounts = $voip_manager->getCustomersVoIPAccountsPhoneNumbers();
+    if (!empty($filter['clientExtraClids'])) {
+        $voip_accounts_tmp = $voip_accounts;
+        foreach ($voip_accounts_tmp as $id => $voips) {
+            $present = false;
+            foreach ($filter['clientExtraClids'] as $voip_id) {
+                if (array_key_exists($voip_id, $voips)) {
+                    $present = true;
+                }
+            }
+            if (!$present) {
+                unset($voip_accounts[$id]);
+            }
+        }
+    }
     $clients = array_keys($voip_accounts);
 }
 
@@ -106,7 +120,7 @@ if (!empty($clients)) {
         $SESSION->redirect('?m=adescom_error');
     }
 }
-
+$trunks = array();
 
 $records = array();
 
@@ -174,7 +188,7 @@ $SESSION->save('filter', $filter);
 $SESSION->save('backto', $_SERVER['QUERY_STRING']);
 
 $SMARTY->assign('records', $records);
-$SMARTY->assign('voipaccounts', $voip_accounts);
+$SMARTY->assign('voipaccounts', isset($voip_accounts_tmp) ? $voip_accounts_tmp : $voip_accounts);
 $SMARTY->assign('filter', $filter);
 $SMARTY->assign('clients_names', $clients_names);
 
