@@ -383,11 +383,12 @@ switch($action)
 			'paytype' => $invoice['paytype'],
 			SYSLOG::RES_CUST => $customer['id'],
 			'name' => $customer['customername'],
-			'address' => $customer['address'],
+			'address' => ($customer['postoffice'] && $customer['postoffice'] != $customer['city'] && $customer['street']
+				? $customer['postoffice'] . ', ' : '') . $customer['address'],
 			'ten' => $customer['ten'],
 			'ssn' => $customer['ssn'],
 			'zip' => $customer['zip'],
-			'city' => $customer['city'],
+			'city' => $customer['postoffice'] ? $customer['postoffice'] : $customer['city'],
 			SYSLOG::RES_DIV => $customer['divisionid'],
 			'div_name' => ($division['name'] ? $division['name'] : ''),
 			'div_shortname' => ($division['shortname'] ? $division['shortname'] : ''),
@@ -629,11 +630,11 @@ function get_extra_position($type, $date_from, $date_to, $customer_id)
         // go through all positions
         foreach ($positions as & $position) {
             if ($position['subscribe']) {
-                $name = $CONFIG['adescom']['invoice_position_subscribe'];
+                $name = ConfigHelper::GetConfig('adescom.invoice_position_calls');
 
                 $name = str_replace('%subscribe_period', date("m/Y", $position['period']), $name);
             } else {
-                $name = $CONFIG['adescom']['invoice_position_calls'];
+                $name = ConfigHelper::GetConfig('adescom.invoice_position_calls');
 
                 $name = str_replace('%calls_fraction', $position['fraction'], $name);
                 $name = str_replace('%calls_count', $position['count'], $name);
@@ -668,8 +669,8 @@ $SESSION->restore('invoiceextraposition', $extraposition);
 if ($extraposition == null) {
     $date = strtotime("-1 month", $invoice['cdate']);
 
-    $extraposition['fromdate'] = parse_date_array(date_trunc($date, 'month', false));
-    $extraposition['todate'] = parse_date_array(date_trunc($date, 'month', true));
+    $extraposition['fromdate'] = DateTimeHelper::parseDateArray(DateTimeHelper::dateTrunc($date, 'month', false));
+    $extraposition['todate'] = DateTimeHelper::parseDateArray(DateTimeHelper::dateTrunc($date, 'month', true));
 }
 
 $SESSION->save('invoiceextraposition', $extraposition);
