@@ -24,7 +24,9 @@
  *  $Id$
  */
 
-include(MODULES_DIR . DIRECTORY_SEPARATOR . 'invoicexajax.inc.php');
+if ($_POST['xjxfun'] !== 'get_extra_position') {
+	include(MODULES_DIR . DIRECTORY_SEPARATOR . 'invoicexajax.inc.php');
+}
 
 $taxeslist = $LMS->GetTaxes();
 $action = isset($_GET['action']) ? $_GET['action'] : '';
