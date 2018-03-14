@@ -23,8 +23,9 @@
  *
  *  $Id$
  */
-
-include(MODULES_DIR . DIRECTORY_SEPARATOR . 'invoicexajax.inc.php');
+if ($_POST['xjxfun'] !== 'get_extra_position') {
+	include(MODULES_DIR . DIRECTORY_SEPARATOR . 'invoicexajax.inc.php');
+}
 
 // Invoiceless liabilities: Zobowiazania/obciazenia na ktore nie zostala wystawiona faktura
 function GetCustomerCovenants($customerid)
