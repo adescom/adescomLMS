@@ -16,7 +16,7 @@ class InitHandler
     public function lmsInit(LMS $hook_data)
     {
         
-        require_once 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+        require_once  SYS_DIR . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
         
         if ($hook_data->getDb() === null) {
             throw new RuntimeException(__METHOD__ . ': Database connection object is required for Adescom plugin! Check other plugins!');
